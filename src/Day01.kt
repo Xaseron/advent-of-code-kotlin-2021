@@ -35,13 +35,10 @@ private fun compareDepths(a: Int, b: Int): Depth {
 }
 
 private fun convertToDepthB(input: List<Int>): List<Depth> {
-    val foo = input.zip(input.drop(1)).zip(input.drop(2)).zip(input.drop(3))
+    val foo = input.zipWithNext()
+    val bar = input.drop(2).zipWithNext()
 
-    return foo.map {
-        val a = it.first.first.first
-        val b = it.first.first.second
-        val c = it.first.second
-        val d = it.second
+    return foo.zip(bar) { (a, b), (c, d) ->
         val sum1 = a + b + c
         val sum2 = b + c + d
         compareDepths(sum1, sum2)
