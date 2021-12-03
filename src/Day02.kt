@@ -18,7 +18,7 @@ fun main() {
     println(part2(input))
 }
 
-fun convertToInstruction(input: List<String>): List<Pair<String, Int>> {
+private fun convertToInstruction(input: List<String>): List<Pair<String, Int>> {
     return input.map { line ->
        val (a, b) = line.split(' ', limit =  2)
         a to b.toInt()
